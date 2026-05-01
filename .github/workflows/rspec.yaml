@@ -7,7 +7,7 @@ jobs:
       runs-on: "ubuntu-24.04"
 
       container:
-        image: ruby:2.7.4
+        image: ruby:3.3.0
 
       services:
         postgres:
