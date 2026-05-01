@@ -1,1 +1,106 @@
-<h1>Olá mundo</h1>
+<section class="home-page flex min-h-screen flex-col bg-background">
+    <header class="sticky top-0 z-30 w-full border-b border-border bg-background/80 backdrop-blur">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+            <a href="/" class="flex items-center gap-2">
+                <%= render "devise/shared/fitmentor_logo" %>
+                <span class="text-xl font-bold tracking-tight">
+                    <span class="text-foreground">Fit</span><span class="text-gradient-primary">Mentor</span>
+                </span>
+            </a>
+
+            <nav class="hidden md:block">
+                <ul class="flex items-center gap-8 text-sm font-medium text-muted-foreground">
+                    <li><a href="#how-it-works" class="transition-smooth hover:text-foreground">Como funciona</a></li>
+                    <li><a href="#for-pros" class="transition-smooth hover:text-foreground">Para profissionais</a></li>
+                    <li><a href="#for-students" class="transition-smooth hover:text-foreground">Para alunos</a></li>
+                </ul>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <%= link_to "Entrar", new_session_path(:user), class: "hidden sm:inline-flex items-center text-sm font-medium text-foreground transition-smooth hover:text-primary" %>
+                <%= link_to "Cadastre-se", new_registration_path(:user), class: "inline-flex items-center justify-center rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-smooth hover:opacity-95" %>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
+            <div class="flex flex-col gap-6">
+                <span class="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                    <span class="material-symbols-outlined text-base text-primary" aria-hidden="true">star</span>
+                    Plataforma #1 de Mentoria Fitness
+                </span>
+
+                <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                    Conecte-se com
+                    <span class="text-gradient-primary">mentores fitness</span>
+                    de excelência
+                </h1>
+
+                <p class="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                    Encontre profissionais de Educação Física qualificados para mentorias online personalizadas. Agende sessões, receba planos de treino e acompanhe sua evolução.
+                </p>
+
+                <div class="flex flex-col gap-3 sm:flex-row">
+                    <%= link_to new_registration_path(:user), class: "inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-6 py-3 text-base font-semibold text-primary-foreground transition-smooth hover:opacity-95" do %>
+                        Sou Aluno
+                        <span class="material-symbols-outlined text-xl" aria-hidden="true">arrow_right_alt</span>
+                    <% end %>
+
+                    <%= link_to new_registration_path(:user), class: "inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-base font-semibold text-foreground transition-smooth hover:border-primary/40 hover:text-primary" do %>
+                        <span class="material-symbols-outlined text-xl" aria-hidden="true">play_arrow</span>
+                        Sou Profissional
+                    <% end %>
+                </div>
+
+                <dl class="mt-4 grid grid-cols-3 gap-6 border-t border-border pt-6">
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-2xl text-primary" aria-hidden="true">group</span>
+                        <div>
+                            <dt class="text-xl font-bold text-foreground sm:text-2xl">500+</dt>
+                            <dd class="text-sm text-muted-foreground">Profissionais</dd>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-2xl text-primary" aria-hidden="true">calendar_month</span>
+                        <div>
+                            <dt class="text-xl font-bold text-foreground sm:text-2xl">10k+</dt>
+                            <dd class="text-sm text-muted-foreground">Mentorias</dd>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-2xl text-primary" aria-hidden="true">star</span>
+                        <div>
+                            <dt class="text-xl font-bold text-foreground sm:text-2xl">4.9</dt>
+                            <dd class="text-sm text-muted-foreground">Avaliação</dd>
+                        </div>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="relative">
+                <%= image_tag 'home/home-hero-presentation-page.jpg',
+                    alt: "Mentora orientando aluna em sessão online",
+                    class: "w-full rounded-2xl object-cover shadow-elevated" %>
+
+                <div class="animate-float absolute -bottom-6 left-6 flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-elevated sm:left-10">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary">
+                        <span class="material-symbols-outlined text-primary-foreground" aria-hidden="true">event</span>
+                    </span>
+                    <div>
+                        <p class="text-sm font-semibold text-foreground">Próxima mentoria</p>
+                        <span class="text-xs text-muted-foreground">Hoje, 15:00 — Hipertrofia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="bg-surface py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Tudo que você precisa em <span class="text-gradient-primary">uma plataforma</span>
+            </h2>
+        </div>
+    </section>
+</section>
