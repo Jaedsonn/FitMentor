@@ -57,14 +57,19 @@
                     <div class="flex items-start gap-3">
                         <span class="material-symbols-outlined text-2xl text-primary" aria-hidden="true">group</span>
                         <div>
-                            <dt class="text-xl font-bold text-foreground sm:text-2xl">500+</dt>
+                            <dt class="text-xl font-bold text-foreground sm:text-2xl">
+                                <span class="counting-element" data-counting-limit="500" data-interval-time="10">0</span>
+                                <span>+</span>
+                            </dt>
                             <dd class="text-sm text-muted-foreground">Profissionais</dd>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
                         <span class="material-symbols-outlined text-2xl text-primary" aria-hidden="true">calendar_month</span>
                         <div>
-                            <dt class="text-xl font-bold text-foreground sm:text-2xl">10k+</dt>
+                            <dt class="text-xl font-bold text-foreground sm:text-2xl" >
+                                10k+
+                            </dt>
                             <dd class="text-sm text-muted-foreground">Mentorias</dd>
                         </div>
                     </div>
@@ -104,3 +109,5 @@
         </div>
     </section>
 </section>
+
+<%= javascript_pack_tag 'homepage' %>
