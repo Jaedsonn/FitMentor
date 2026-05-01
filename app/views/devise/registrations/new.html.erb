@@ -1,49 +1,99 @@
-<h2>Sign up</h2>
+<div class="flex min-h-screen w-full">
+  <%= render "devise/shared/brand_panel",
+      heading: "Comece sua jornada com o mentor certo.",
+      subheading: "Cadastre-se gratuitamente e descubra profissionais alinhados ao seu objetivo." %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <section class="flex w-full lg:w-1/2 items-center justify-center px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div class="w-full max-w-xl space-y-8">
+      <div class="lg:hidden flex items-center gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary shadow-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary-foreground">
+            <path d="M14.4 14.4 9.6 9.6"/>
+            <path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/>
+            <path d="m21.5 21.5-1.4-1.4"/>
+            <path d="M3.9 3.9 2.5 2.5"/>
+            <path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/>
+          </svg>
+        </span>
+        <span class="text-xl font-extrabold tracking-tight text-foreground">
+          Fit<span class="text-gradient-primary">Mentor</span>
+        </span>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+      <header class="space-y-2">
+        <h1 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+          Crie sua conta
+        </h1>
+        <p class="text-sm text-muted-foreground">
+          Já tem uma conta?
+          <%= link_to "Entrar", new_session_path(resource_name),
+              class: "text-primary font-medium hover:opacity-80 transition-smooth" %>
+        </p>
+      </header>
 
-  <div class="field">
-    <%= f.label :birth_date %>
-    <%= f.date_field :birth_date %>
-  </div>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+      <%
+        field_wrap = "space-y-2"
+        label_cls  = "block text-sm font-medium text-foreground"
+        input_cls  = "block w-full rounded-xl border border-border bg-card px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground shadow-card focus:border-primary focus:outline-none focus:ring-1 focus:ring-ring transition-smooth"
+      %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-5" }) do |f| %>
+        <div class="<%= field_wrap %>">
+          <%= f.label :name, "Nome completo", class: label_cls %>
+          <%= f.text_field :name, autofocus: true, placeholder: "Como devemos te chamar?", class: input_cls %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="<%= field_wrap %>">
+          <%= f.label :email, "E-mail", class: label_cls %>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "voce@exemplo.com", class: input_cls %>
+        </div>
 
-  <div class="field">
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-  </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="<%= field_wrap %>">
+            <%= f.label :password, "Senha", class: label_cls %>
+            <%= f.password_field :password, autocomplete: "new-password", class: input_cls %>
+            <% if @minimum_password_length %>
+              <p class="text-xs text-muted-foreground">
+                Mínimo de <%= @minimum_password_length %> caracteres.
+              </p>
+            <% end %>
+          </div>
 
-  <div class="field">
-    <%= f.label :state %>
-    <%= f.text_field :state %>
-  </div>
+          <div class="<%= field_wrap %>">
+            <%= f.label :password_confirmation, "Confirmar senha", class: label_cls %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: input_cls %>
+          </div>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="<%= field_wrap %>">
+            <%= f.label :birth_date, "Data de nascimento", class: label_cls %>
+            <%= f.date_field :birth_date, class: input_cls %>
+          </div>
 
-<%= render "devise/shared/links" %>
+          <div class="<%= field_wrap %>">
+            <%= f.label :state, "Estado", class: label_cls %>
+            <%= f.text_field :state, placeholder: "Ex.: SP", class: input_cls %>
+          </div>
+        </div>
+
+        <div class="<%= field_wrap %>">
+          <%= f.label :city, "Cidade", class: label_cls %>
+          <%= f.text_field :city, placeholder: "Sua cidade", class: input_cls %>
+        </div>
+
+        <%= f.submit "Criar minha conta",
+            class: "w-full inline-flex items-center justify-center rounded-xl bg-gradient-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-primary hover:opacity-95 hover:-translate-y-0.5 active:translate-y-0 transition-smooth focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background cursor-pointer" %>
+
+        <p class="text-xs text-muted-foreground text-center">
+          Ao continuar, você concorda com nossos
+          <a href="#" class="text-primary hover:underline">Termos</a>
+          e a
+          <a href="#" class="text-primary hover:underline">Política de Privacidade</a>.
+        </p>
+      <% end %>
+    </div>
+  </section>
+</div>
