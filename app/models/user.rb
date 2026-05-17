@@ -14,4 +14,6 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validates :state, presence: true
 
+  has_one_attached :profile_image
+
 end
