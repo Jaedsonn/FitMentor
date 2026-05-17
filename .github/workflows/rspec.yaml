@@ -69,6 +69,7 @@ jobs:
             RAILS_ENV: test
             NODE_OPTIONS: --openssl-legacy-provider
           run: |
+            export NODE_OPTIONS=--openssl-legacy-provider
             bin/rails assets:clobber
             bin/rails assets:precompile
             bin/rails db:create 
