@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_05_17_005412) do
+ActiveRecord::Schema.define(version: 2026_05_17_011646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 2026_05_17_005412) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cref"], name: "index_professionals_on_cref", unique: true
     t.index ["user_id"], name: "index_professionals_on_user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "workout_time", null: false
+    t.integer "workout_goal", null: false
+    t.string "dietary_restrictions", default: [], array: true
+    t.string "physical_limitations", default: [], array: true
+    t.float "weight", null: false
+    t.float "height", null: false
+    t.string "medical_notes", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_students_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +57,5 @@ ActiveRecord::Schema.define(version: 2026_05_17_005412) do
   end
 
   add_foreign_key "professionals", "users"
+  add_foreign_key "students", "users"
 end

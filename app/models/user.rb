@@ -6,7 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :professionals, dependent: :destroy
+  has_one :professional_profile, class_name: 'Professional', foreign_key: 'user_id', dependent: :destroy
+  has_one :student_profile, class_name: 'Student', foreign_key: 'user_id', dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 3 }
   validates :city, presence: true
