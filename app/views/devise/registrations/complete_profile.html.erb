@@ -1,0 +1,65 @@
+<div class="flex min-h-screen w-full">
+  <%= render "devise/shared/brand_panel",
+      heading: "Quase lá! Finalize seu perfil.",
+      subheading: "Escolha como você quer participar do FitMentor para liberar o acesso completo." %>
+
+  <section class="flex w-full lg:w-1/2 items-center justify-center px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div class="w-full max-w-xl space-y-8">
+      <div class="lg:hidden flex items-center gap-3">
+        <%= render "devise/shared/fitmentor_logo" %>
+        <span class="text-xl font-extrabold tracking-tight text-foreground">
+          Fit<span class="text-gradient-primary">Mentor</span>
+        </span>
+      </div>
+
+      <header class="space-y-2">
+        <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+          Etapa final · Perfil
+        </span>
+        <h1 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+          Complete seu perfil
+        </h1>
+        <p class="text-sm text-muted-foreground">
+          Selecione um tipo de perfil para continuar. Você pode criar o outro depois pelo painel.
+        </p>
+      </header>
+
+      <div role="tablist" aria-label="Tipo de perfil"
+           class="grid grid-cols-2 gap-1 rounded-xl border border-border bg-surface p-1 shadow-card">
+        <button type="button" role="tab"
+                id="tab-student"
+                data-tab-target="panel-student"
+                aria-controls="panel-student"
+                aria-selected="true"
+                class="inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-smooth hover:text-foreground focus:outline-none focus:ring-1 focus:ring-ring aria-selected:bg-card aria-selected:text-primary aria-selected:shadow-card">
+          Sou aluno
+        </button>
+        <button type="button" role="tab"
+                id="tab-professional"
+                data-tab-target="panel-professional"
+                aria-controls="panel-professional"
+                aria-selected="false"
+                class="inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-smooth hover:text-foreground focus:outline-none focus:ring-1 focus:ring-ring aria-selected:bg-card aria-selected:text-primary aria-selected:shadow-card">
+          Sou profissional
+        </button>
+      </div>
+
+      <%
+        field_wrap = "space-y-2"
+        label_cls  = "block text-sm font-medium text-foreground"
+        input_cls  = "block w-full rounded-xl border border-border bg-card px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground shadow-card focus:border-primary focus:outline-none focus:ring-1 focus:ring-ring transition-smooth"
+        form_locals = { field_wrap: field_wrap, label_cls: label_cls, input_cls: input_cls }
+      %>
+
+      <div id="panel-student" role="tabpanel" aria-labelledby="tab-student" data-tab-panel>
+        <%= render 'students/registration_form', **form_locals, student: @student %>
+      </div>
+
+      <div id="panel-professional" role="tabpanel" aria-labelledby="tab-professional" data-tab-panel class="hidden">
+        <%= render 'professionals/registration_form', **form_locals, professional: @professional %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<%= javascript_pack_tag 'registrationpage' %>

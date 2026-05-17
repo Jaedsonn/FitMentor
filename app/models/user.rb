@@ -16,4 +16,15 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  def professional?
+    professional_profile.present?
+  end
+
+  def student?
+    student_profile.present?
+  end
+
+  def user_profile_complete?
+    professional_profile.present? || student_profile.present?
+  end
 end

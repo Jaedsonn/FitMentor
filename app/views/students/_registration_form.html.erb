@@ -1,0 +1,51 @@
+<%= form_for(student, html: { class: "space-y-5" }) do |f| %>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="<%= field_wrap %>">
+            <%= f.label :workout_goal, "Objetivo principal", class: label_cls %>
+            <%= f.number_field :workout_goal, min: 0, placeholder: "Ex.: 1 (hipertrofia)", class: input_cls %>
+            <p class="text-xs text-muted-foreground">Código numérico do objetivo (perda de peso, hipertrofia, etc.).</p>
+          </div>
+
+          <div class="<%= field_wrap %>">
+            <%= f.label :workout_time, "Tempo de treino (semanas)", class: label_cls %>
+            <%= f.number_field :workout_time, min: 0, placeholder: "Ex.: 12", class: input_cls %>
+          </div>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="<%= field_wrap %>">
+            <%= f.label :weight, "Peso (kg)", class: label_cls %>
+            <%= f.number_field :weight, step: 0.1, min: 0, placeholder: "Ex.: 72.5", class: input_cls %>
+          </div>
+
+          <div class="<%= field_wrap %>">
+            <%= f.label :height, "Altura (m)", class: label_cls %>
+            <%= f.number_field :height, step: 0.01, min: 0, placeholder: "Ex.: 1.78", class: input_cls %>
+          </div>
+        </div>
+
+        <div class="<%= field_wrap %>">
+          <%= f.label :dietary_restrictions, "Restrições alimentares", class: label_cls %>
+          <%= f.text_field :dietary_restrictions, placeholder: "Ex.: lactose, glúten", class: input_cls %>
+          <p class="text-xs text-muted-foreground">Separe múltiplos itens por vírgula.</p>
+        </div>
+
+        <div class="<%= field_wrap %>">
+          <%= f.label :physical_limitations, "Limitações físicas", class: label_cls %>
+          <%= f.text_field :physical_limitations, placeholder: "Ex.: lombar, joelho", class: input_cls %>
+          <p class="text-xs text-muted-foreground">Separe múltiplos itens por vírgula.</p>
+        </div>
+
+        <div class="<%= field_wrap %>">
+          <%= f.label :medical_notes, "Observações médicas", class: label_cls %>
+          <%= f.text_area :medical_notes, rows: 3, placeholder: "Algo que seu mentor deva saber antes de prescrever um plano?", class: "#{input_cls} min-h-[96px] resize-y" %>
+        </div>
+
+        <div class="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
+          <%= link_to "Voltar", root_path,
+              class: "inline-flex items-center justify-center rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition-smooth hover:border-primary/40 hover:text-primary focus:outline-none focus:ring-1 focus:ring-ring" %>
+
+          <%= f.submit "Concluir cadastro",
+              class: "w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-primary hover:opacity-95 hover:-translate-y-0.5 active:translate-y-0 transition-smooth focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background cursor-pointer" %>
+        </div>
+      <% end %>

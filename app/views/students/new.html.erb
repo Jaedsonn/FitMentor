@@ -1,0 +1,43 @@
+<div class="flex min-h-screen w-full">
+  <%= render "devise/shared/brand_panel",
+      heading: "Conte para o seu mentor como você treina.",
+      subheading: "Esses dados ajudam profissionais a montar planos personalizados para o seu objetivo." %>
+
+  <section class="flex w-full lg:w-1/2 items-center justify-center px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div class="w-full max-w-xl space-y-8">
+      <div class="lg:hidden flex items-center gap-3">
+        <%= render "devise/shared/fitmentor_logo" %>
+        <span class="text-xl font-extrabold tracking-tight text-foreground">
+          Fit<span class="text-gradient-primary">Mentor</span>
+        </span>
+      </div>
+
+      <header class="space-y-2">
+        <span class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+          Etapa 2 de 2 · Perfil do aluno
+        </span>
+        <h1 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+          Complete seu perfil de aluno
+        </h1>
+        <p class="text-sm text-muted-foreground">
+          Você poderá editar essas informações depois no seu painel.
+        </p>
+      </header>
+
+      <% if @student.errors.any? %>
+        <div class="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
+          <p class="text-sm font-medium text-destructive">
+            Não foi possível salvar o perfil. Revise os campos:
+          </p>
+          <ul class="mt-2 list-disc pl-5 text-sm text-destructive">
+            <% @student.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= render 'registration_form', student: @student %>
+    </div>
+  </section>
+</div>
