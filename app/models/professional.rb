@@ -3,7 +3,7 @@
 class Professional < ApplicationRecord
   belongs_to :user
 
-  validates :cref, presence: true, unique: true
+  validates :cref, presence: true, uniqueness: true
   validates :bio, presence: true
   before_save :normalize_cref
 
